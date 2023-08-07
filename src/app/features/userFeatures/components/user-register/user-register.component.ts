@@ -1,25 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../service/user.service';
+import { UserService } from '../../service/user.service';
 import { UserData, ApiResponse } from 'src/app/interface/userData/user';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
   styleUrls: ['./user-register.component.css'],
 })
+
 export class UserRegisterComponent implements OnInit {
+
   registrationForm!: FormGroup;
   errorMessage: string | undefined;
-
-  inputClass =
-    'block w-full px-4 py-2 mt-2 text-blue-900 bg-white border rounded-md focus:border-blue-900 focus:ring-blue-900 focus:outline-none focus:ring focus:ring-opacity-40';
+  inputClass ='block w-full px-4 py-2 mt-2 text-blue-900 bg-white border rounded-md focus:border-blue-900 focus:ring-blue-900 focus:outline-none focus:ring focus:ring-opacity-40';
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private route: Router
   ) {}
 
   ngOnInit() {
@@ -62,9 +60,8 @@ export class UserRegisterComponent implements OnInit {
       password: this.registrationForm.value.password,
     };
 
-    this.userService
-      .registerUser(userDetails)
-      .subscribe((data: ApiResponse) => {
+    //register new user
+    this.userService.registerUser(userDetails).subscribe((data: ApiResponse) => {
         !data.success ? (this.errorMessage = data.message) : '';
       });
 

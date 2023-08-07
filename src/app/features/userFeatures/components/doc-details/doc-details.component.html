@@ -1,0 +1,25 @@
+<div class="w-2/4 mx-auto mt-28 h-screen ">
+    <div>
+        <div class="flex flex-col md:flex-row md:gap-x-40 gap-y-28 items-center md:justify-stretch">
+            <div>
+                <!-- Set a constant width and height for the image -->
+                <img class="max-w-56 max-h-72" src="{{docDetails.profilePic}}" alt="">
+            </div>
+            <div class="grid gap-7 md:flex md:flex-col md:gap-y-9 md:items-start md:justify-start">
+                <div class="grid gap-2">
+                    <p class="text-4xl font-bold">DR. {{docDetails.fullName | uppercase}}</p>
+                    <p class="text-2xl text-sky-400">{{docDetails.specialization}}</p>
+                </div>
+                <p class="date">Experince : {{docDetails.experience}} </p>
+                <div class="grid gap-2">
+                    <p class="date">Date</p>
+                    <input type="date" class="border rounded-lg px-3 py-2 mt-1 w-full" [min]="getToday()" [(ngModel)]="selectedDate"
+                    (ngModelChange)="onDateChange()">
+                <div>
+                    <p class="date">Time</p>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+</div>

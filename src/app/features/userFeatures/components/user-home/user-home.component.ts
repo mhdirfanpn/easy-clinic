@@ -7,11 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserHomeComponent implements OnInit {
 
-  showModal = false;
+  loader : boolean = true
 
   constructor() { }
 
   ngOnInit(): void {
+    //load page after the timer
+    setTimeout(()=>{
+      this.loader = false
+    },1000)
+   
   }
 
 }

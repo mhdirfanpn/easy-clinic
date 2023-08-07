@@ -1,0 +1,91 @@
+<div *ngIf="loader" class="loader-container">
+  <div class="loader"></div>
+</div>
+
+<div *ngIf="!loader" class="h-screen items-center justify-center my-20">
+  <div class="h-fit flex justify-center align-middle py-20 bg-gray-50">
+    <div
+      class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
+    >
+      <div class="flex justify-end px-4 pt-4">
+        <!-- Dropdown menu -->
+        <div
+          id="dropdown"
+          class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+        >
+          <ul class="py-2" aria-labelledby="dropdownButton">
+            <li>
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                >Edit</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                >Export Data</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                >Delete</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex flex-col items-center pb-10">
+        <ng-container *ngIf="user.profilePic; else defaultAvatar">
+          <img
+            class="w-24 h-24 mb-3 mt-9 rounded-full shadow-lg"
+            src="{{ user.profilePic }}"
+            alt="Bonnie image"
+          />
+        </ng-container>
+
+        <!-- The 'else' block with the default avatar -->
+        <ng-template #defaultAvatar>
+          <img
+            class="w-24 h-24 mb-3 mt-9 rounded-full shadow-lg"
+            src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+            alt="Default Avatar"
+          />
+        </ng-template>
+        <div class="grid gap-y-3">
+          <h5
+            class="mb-1 text-xl font-medium text-gray-900 dark:text-white text-center"
+          >
+            {{ user.userName }}
+          </h5>
+          <span class="text-sm text-gray-500 dark:text-gray-400 text-center"
+            >Email : {{ user.email }}</span
+          >
+          <span class="text-sm text-gray-500 dark:text-gray-400 text-center"
+            >Number : {{ user.number }}</span
+          >
+          <span class="text-sm text-gray-500 dark:text-gray-400 text-center"
+            >DOB : {{ user.date }}</span
+          >
+        </div>
+
+        <div class="flex mt-4 space-x-3 md:mt-6">
+          <a
+            (click)="goToEditPage(user._id)"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
+            >Edit Details</a
+          >
+          <a
+            routerLink="/imageUpload"
+            href="#"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
+            >Add your image</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

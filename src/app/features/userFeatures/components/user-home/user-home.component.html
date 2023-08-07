@@ -1,0 +1,12 @@
+<ng-container *ngIf="loader; else content">
+    <div class="loader-container">
+      <div class="loader"></div>
+    </div>
+  </ng-container>
+  
+  <ng-template #content>
+    <app-hero-one></app-hero-one>
+    <app-hero-two></app-hero-two>
+    <app-doc-cards></app-doc-cards>
+  </ng-template>
+  
