@@ -1,6 +1,6 @@
 //user interface
 export interface UserData {
-  _id?:string;
+  _id?: string;
   userName: string;
   email: string;
   date: Date;
@@ -9,17 +9,13 @@ export interface UserData {
   profilePic?: string;
   success?: boolean;
   message?: string;
-  isBlocked?: boolean
+  isBlocked?: boolean;
 }
 
-
 //interface for api response
-  export interface ApiResponse {
-    success?: boolean;
-    message?: string;
-    token: string;
-    adminToken:string;
-  }
-
-
-
+export interface ApiResponse {
+  success?: boolean;
+  message?: string;
+  token: string;
+  adminToken: string;
+}

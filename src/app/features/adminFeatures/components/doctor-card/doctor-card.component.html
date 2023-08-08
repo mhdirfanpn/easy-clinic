@@ -1,0 +1,44 @@
+<section class="bg-gray-100 w-full mt-20">
+  <div class="py-8 px-4 mx-auto lg:py-16 lg:px-6">
+    <div class="grid gap-8 lg:grid-cols-2">
+      <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md">
+        <h2 class="mb-4 text-2xl font-bold text-blue-600">
+          <a>DR. {{ doctorDetails.fullName | uppercase }}</a>
+        </h2>
+        <p class="mb-5 font-semibold text-gray-500">
+          <span class="font-light">Email -</span> {{ doctorDetails.email }}
+        </p>
+        <p class="mb-5 font-semibold text-gray-500">
+          <span class="font-light">Mobile -</span> {{ doctorDetails.number }}
+        </p>
+        <div class="space-x-8 flex justify-between md:mt-0 md:justify-center">
+          <!-- Add any additional content here if needed -->
+        </div>
+        <div *ngIf="!doctorDetails.isVerified">
+            <button
+              class="bg-blue-700 w-32 font-semibold text-white h-10 rounded-full"
+              (click)="approveRequest()"
+            >
+              Approve
+            </button>
+          </div>
+          
+      </article>
+
+      <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md">
+        <p class="mb-5 font-semibold text-gray-500">
+          <span class="font-light">Specialization -</span>
+          {{ doctorDetails.specialization }}
+        </p>
+        <p class="mb-5 font-semibold text-gray-500">
+          <span class="font-light">Experience -</span>
+          {{ doctorDetails.experience }}
+        </p>
+        <p class="mb-5 font-semibold text-gray-500">
+          <span class="font-light">Medical Registration Number -</span>
+          {{ doctorDetails.register }}
+        </p>
+      </article>
+    </div>
+  </div>
+</section>

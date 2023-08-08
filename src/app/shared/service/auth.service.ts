@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
-import  { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   private readonly JWT_TOKEN_KEY = 'userToken';
   private readonly DOCTOR_TOKEN_KEY = 'doctorToken';
   private readonly ADMIN_TOKEN_KEY = 'adminToken';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   // User-related token methods
   getJwtToken(): string | null {
@@ -48,7 +47,7 @@ export class AuthService {
 
   setAdminToken(token: string): void {
     localStorage.setItem(this.ADMIN_TOKEN_KEY, token);
-    this.router.navigate(['/admin/home']);
+    this.router.navigate(['/admin/dashboard']);
   }
 
   isAdminLoggedIn(): boolean {

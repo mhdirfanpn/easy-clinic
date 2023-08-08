@@ -6,25 +6,27 @@ import { UserData } from 'src/app/interface/user';
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  styleUrls: ['./users-list.component.css'],
 })
 export class UsersListComponent implements OnInit {
-
-  user : UserData[] = []
+  user: UserData[] = [];
   loader: boolean = true;
 
+  constructor(
+    private authService: AuthService,
+    private adminService: AdminService
+  ) {}
 
-  constructor(private authService : AuthService, private adminService: AdminService) { }
-
+  //get all users
   ngOnInit(): void {
-    console.log(this.authService.getAdminToken())
-    this.adminService.allUsers().subscribe(users=>{
-      this.user = users
-      this.loader = false
-    })  
+    this.adminService.allUsers().subscribe((users) => {
+      this.user = users;
+      this.loader = false;
+    });
   }
 
-  onCheckboxChange(id:any) {
-      this.adminService.blockUser(id).subscribe()
+  //block / unBlock user
+  onCheckboxChange(id: any) {
+    this.adminService.blockUser(id).subscribe();
   }
 }

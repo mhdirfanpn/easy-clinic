@@ -1,25 +1,35 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import {
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  Router,
+} from '@angular/router';
 import { Observable } from 'rxjs';
 // import { AuthService } from 'src/app/features/userFeatures/service/auth.service';
 import { AuthService } from '../../service/auth.service';
 import { UserService } from 'src/app/features/userFeatures/service/user.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserGuard implements CanActivate {
-  constructor(private authService: AuthService, private userService: UserService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.isLoggedIn()) {
-      const token = this.authService.getDecodedAccessToken('user')
-      this.userService.getUserDetails(token.id).subscribe(user=>{
-        user.isBlocked ? this.authService.logout('user') : "" 
-      })
+      //checking if user is blocked or not
+      const token = this.authService.getDecodedAccessToken('user');
+      this.userService.getUserDetails(token.id).subscribe((user) => {
+        user.isBlocked ? this.authService.logout('user') : '';
+      });
 
       // Authenticated user - allow access to the requested route
       // Redirect to home page if the requested route is '/login'
@@ -34,7 +44,6 @@ export class UserGuard implements CanActivate {
         this.router.navigate(['/user/login']);
         return false;
       }
-      
     }
     return true;
   }

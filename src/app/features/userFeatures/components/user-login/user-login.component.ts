@@ -12,8 +12,6 @@ import { UserData } from 'src/app/interface/user';
 
 export class UserLoginComponent implements OnInit {
 
-  
-
   registrationForm!: FormGroup;
   userDetails! : UserData
   errorMessage: string | undefined;

@@ -15,8 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private adminService: AdminService,
-    private router: Router
+    private adminService: AdminService
   ) {}
 
   ngOnInit() {
@@ -33,6 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    //after form submission
     if (this.loginForm.invalid) {
       this.errorMessage = 'All fields are required';
       return;

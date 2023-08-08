@@ -19,7 +19,6 @@ import { DocDetailsComponent } from 'src/app/features/userFeatures/components/do
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 
-
 @NgModule({
   declarations: [
     UserLoginComponent,
@@ -33,7 +32,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     DocDetailsComponent,
     UserProfileComponent,
     DocCardsComponent,
-    UserFormComponent
+    UserFormComponent,
   ],
   imports: [
     CommonModule,
@@ -42,8 +41,6 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     FormsModule,
     SharedModule,
   ],
-  providers: [
-    UserService,
-  ]
+  providers: [UserService],
 })
-export class UserModule { }
+export class UserModule {}

@@ -25,7 +25,6 @@ export class UserFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     //get the user details
     const userId = this.route.snapshot.paramMap.get('id');
     this.userService.getUserDetails(userId).subscribe((data) => {
@@ -53,8 +52,6 @@ export class UserFormComponent implements OnInit {
     });
   }
 
-
-
   //update user profile image
   onImageSelected(event: any, id: any) {
     const file: File = event.target.files[0];
@@ -72,7 +69,6 @@ export class UserFormComponent implements OnInit {
     }
   }
 
-
   //update user details
   updateDetails(id: any) {
     if (this.updateForm.invalid) {
@@ -81,9 +77,9 @@ export class UserFormComponent implements OnInit {
     }
     this.loader = true;
     this.userService.updateProfile(this.updateForm.value, id).subscribe();
-    setTimeout(()=>{
+    setTimeout(() => {
       this.loader = false;
       this.router.navigate(['user/profile']);
-    },2000) 
+    }, 2000);
   }
 }

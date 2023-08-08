@@ -1,23 +1,29 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../service/auth.service';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdminGuard implements CanActivate {
-
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     if (this.authService.isAdminLoggedIn()) {
-      console.log("aaaaaaa")
       // Authenticated user - allow access to the requested route
       // Redirect to home page if the requested route is '/login'
       if (state.url === '/admin/login') {
@@ -28,13 +34,10 @@ export class AdminGuard implements CanActivate {
     } else {
       // Not authenticated user - redirect to the login page
       if (state.url !== '/admin/login') {
-        console.log("bbbbbbbbbb")
         this.router.navigate(['/admin/login']);
         return false;
       }
-      
     }
     return true;
   }
-  
 }

@@ -6,17 +6,15 @@ import { Doctor } from 'src/app/interface/doctor';
 @Component({
   selector: 'app-doc-details',
   templateUrl: './doc-details.component.html',
-  styleUrls: ['./doc-details.component.css']
+  styleUrls: ['./doc-details.component.css'],
 })
 export class DocDetailsComponent implements OnInit {
-
-  docDetails! : Doctor
-  getParamId : string = ""
-  imageUrl : string = ""
+  docDetails!: Doctor;
+  getParamId: string = '';
+  imageUrl: string = '';
   isLoading: boolean = true;
   selectedDate: string = '';
   loader: boolean = true;
-
 
   //disable the past date
   getToday(): string {
@@ -27,22 +25,23 @@ export class DocDetailsComponent implements OnInit {
     return `${year}-${month}-${day}`;
   }
 
-  constructor(private router : ActivatedRoute, private userService: UserService) { }
+  constructor(
+    private router: ActivatedRoute,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-    this.router.paramMap.subscribe(params => {
+    this.router.paramMap.subscribe((params) => {
       this.getParamId = params.get('id')!;
     });
     //fetch single doctor
-    this.userService.getDocDetails(this.getParamId).subscribe(data=>{
-      this.docDetails = data
+    this.userService.getDocDetails(this.getParamId).subscribe((data) => {
+      this.docDetails = data;
       this.loader = false;
-    })
+    });
   }
 
   onDateChange(): void {
     console.log('Selected date:', this.selectedDate);
- 
   }
-
 }

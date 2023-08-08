@@ -6,24 +6,23 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-doc-cards',
   templateUrl: './doc-cards.component.html',
-  styleUrls: ['./doc-cards.component.css']
+  styleUrls: ['./doc-cards.component.css'],
 })
 export class DocCardsComponent implements OnInit {
+  doctorDetails: Doctor[] = [];
 
-  doctorDetails : Doctor[] = []
-
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     //fetch the doctors details
-    this.userService.getDoctors().subscribe(data=>{
-      this.doctorDetails = data
-    })
+    this.userService.getDoctors().subscribe((data) => {
+      this.doctorDetails = data;
+    });
   }
 
- //view single doctor
-  viewDoc(id:string){
-    this.router.navigate(['/user/docDetails',id])
+  //view single doctor
+  viewDoc(id: string) {
+    this.router.navigate(['/user/docDetails', id]);
   }
 
   @ViewChild('wrapperRef') wrapperRef!: ElementRef;
@@ -36,5 +35,4 @@ export class DocCardsComponent implements OnInit {
   scrollRight(): void {
     this.wrapperRef.nativeElement.scrollLeft += this.scrollStep;
   }
-
 }

@@ -12,16 +12,16 @@
                     User Name
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Email
+                   Email
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Number
+                   Number
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    DOB
+                   DOB
                 </th>
                  <th scope="col" class="px-6 py-3">
-                    Action
+                  Action
                 </th>
                
             </tr>
@@ -30,16 +30,16 @@
             <tr *ngFor="let u of user" class="bg-white border-b hover:bg-gray-50">
                 <td class="px-6 py-4 flex">
                   <img class="h-10 w-10 rounded-full" [src]="u.profilePic" alt="">
-                  <span class="p-2">{{u.userName}}</span>
+                  <span class="p-2">{{u.userName | uppercase}}</span>
                 </td>
                 <td class="px-6 py-4">
-                  {{u.email}}
+                  ✉ {{u.email}}
                 </td>
                 <td class="px-6 py-4">
-                  {{u.number}}
+                  📞 {{u.number}}
                 </td>
                 <td class="px-6 py-4">
-                  {{u.date}}
+                  🗓 {{u.date}}
                 </td>
                 <td class="whitespace-nowrap px-4 py-2 flex justify-center">
                   <div class="align-middle">

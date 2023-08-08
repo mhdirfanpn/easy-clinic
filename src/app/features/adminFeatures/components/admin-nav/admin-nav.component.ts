@@ -13,6 +13,7 @@ export class AdminNavComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //admin logout
   adminLogout(){
     this.authService.logout('admin')
   }

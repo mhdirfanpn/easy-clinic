@@ -45,6 +45,7 @@ export class UserRegisterComponent implements OnInit {
     });
   }
 
+  //after form submission
   onRegister() {
     if (this.registrationForm.invalid) {
       this.errorMessage = 'All fields are required';
