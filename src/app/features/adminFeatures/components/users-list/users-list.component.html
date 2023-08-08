@@ -1,0 +1,67 @@
+<div *ngIf="loader" class="loader-container">
+    <div class="loader"></div>
+  </div>
+  
+<div *ngIf="!loader" class="center-table mt-8 h-screen">
+    <p class="text-center font-semibold text-3xl text-blue-600">USERS - LIST</p>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+    <table class="w-full text-sm text-left">
+        <thead class="text-xs">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    User Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Email
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Number
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    DOB
+                </th>
+                 <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of user" class="bg-white border-b hover:bg-gray-50">
+                <td class="px-6 py-4 flex">
+                  <img class="h-10 w-10 rounded-full" [src]="u.profilePic" alt="">
+                  <span class="p-2">{{u.userName}}</span>
+                </td>
+                <td class="px-6 py-4">
+                  {{u.email}}
+                </td>
+                <td class="px-6 py-4">
+                  {{u.number}}
+                </td>
+                <td class="px-6 py-4">
+                  {{u.date}}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2 flex justify-center">
+                  <div class="align-middle">
+                    <label class="relative inline-flex cursor-pointer my-auto align-middle">
+                      <input
+                        type="checkbox"
+                        value="active"
+                        class="sr-only peer"
+                        [checked]="u.isBlocked"
+                        (change)="onCheckboxChange(u._id)"
+                      />
+                      <div
+                        class="w-9 h-5 bg-red-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-transparent rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-green-700"
+                      ></div>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+              
+        </tbody>
+    </table>
+</div>
+</div>
+
+

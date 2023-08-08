@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../service/auth.service';
+// import { AuthService } from '../../service/auth.service';
+import { AuthService } from 'src/app/shared/service/auth.service';
 import { NavigationEnd } from '@angular/router';
 
 @Component({
@@ -28,7 +29,7 @@ export class UserNavComponent implements OnInit {
 
   //user logout
   handleLogout() {
-    this.authService.logout();
+    this.authService.logout('user');
   }
 
   //navigate to respective paths

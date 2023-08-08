@@ -1,0 +1,31 @@
+<div class="body">
+    <div id="bg"></div>
+  
+    <div class="form" [formGroup]="loginForm">
+      <div class="form-field">
+        <input type="email" formControlName="email" placeholder="Email" />
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error">
+          Email is required and must be a valid email address.
+        </div>
+      </div>
+  
+      <div class="form-field">
+        <input type="password" formControlName="password" placeholder="Password" />
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
+          Password is required and must be at least 6 characters long.
+        </div>
+        <div *ngIf="errorMessage" class="error">
+          {{ errorMessage }}
+        </div>
+      </div>
+  
+      <div class="account">
+        <p>Don't have an account?</p>
+      </div>
+  
+      <div class="form-field">
+        <button class="btn" type="button" (click)="login()">Log in</button>
+      </div>
+    </div>
+  </div>
+  

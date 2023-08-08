@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { UserData } from 'src/app/interface/userData/user';
-import { ApiResponse } from 'src/app/interface/userData/user';
+import { UserData } from 'src/app/interface/user';
+import { ApiResponse } from 'src/app/interface/user';
 import { USER_API } from 'src/app/shared/api.config';
 import { tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Doctor } from 'src/app/interface/doctorData/doctor';
+import { Doctor } from 'src/app/interface/doctor';
 import { AuthService } from './auth.service';
+//import { AuthService } from 'src/app/shared/service/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -42,8 +43,7 @@ export class UserService {
   }
 
   getDoctors():Observable<Doctor[]>{
-    return this.http.get<Doctor[]>(`${USER_API}/allDoctors`)
-    
+    return this.http.get<Doctor[]>(`${USER_API}/allDoctors`) 
   }
 
   getDocDetails(id:string):Observable<Doctor>{

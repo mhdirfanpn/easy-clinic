@@ -9,6 +9,7 @@ export interface UserData {
   profilePic?: string;
   success?: boolean;
   message?: string;
+  isBlocked?: boolean
 }
 
 
@@ -16,5 +17,9 @@ export interface UserData {
   export interface ApiResponse {
     success?: boolean;
     message?: string;
-    token: string; 
+    token: string;
+    adminToken:string;
   }
+
+
+

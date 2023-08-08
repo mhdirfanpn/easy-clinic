@@ -1,4 +1,7 @@
-<div class="w-2/4 mx-auto mt-28 h-screen ">
+<div *ngIf="loader" class="loader-container">
+    <div class="loader"></div>
+  </div>
+<div *ngIf="!loader" class="w-2/4 mx-auto mt-36 h-screen ">
     <div>
         <div class="flex flex-col md:flex-row md:gap-x-40 gap-y-28 items-center md:justify-stretch">
             <div>

@@ -10,16 +10,16 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { UserFormComponent } from './components/user-form/user-form.component';
 
 const routes: Routes = [
-  { path: 'register', component: UserRegisterComponent },
-  { path: 'login', component: UserLoginComponent, canActivate: [UserGuard] },
+  { path: 'register', component: UserRegisterComponent, canActivate: [UserGuard] },
+  { path: 'login', component: UserLoginComponent, canActivate: [UserGuard]},
   {
     path: '',
     component: UserLayoutComponent, // Use the common layout for all pages except login and register
     children: [
       { path: 'home', component: UserHomeComponent },
-      { path: 'docDetails/:id', component: DocDetailsComponent },
-      { path: 'profile', component: UserProfileComponent },
-      { path: 'editDetails/:id', component: UserFormComponent },
+      { path: 'docDetails/:id', component: DocDetailsComponent, canActivate: [UserGuard] },
+      { path: 'profile', component: UserProfileComponent, canActivate: [UserGuard] },
+      { path: 'editDetails/:id', component: UserFormComponent, canActivate: [UserGuard] },
     ],
   },
 ];

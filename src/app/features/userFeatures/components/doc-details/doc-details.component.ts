@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../service/user.service';
-import { Doctor } from 'src/app/interface/doctorData/doctor';
+import { Doctor } from 'src/app/interface/doctor';
 
 @Component({
   selector: 'app-doc-details',
@@ -15,6 +15,7 @@ export class DocDetailsComponent implements OnInit {
   imageUrl : string = ""
   isLoading: boolean = true;
   selectedDate: string = '';
+  loader: boolean = true;
 
 
   //disable the past date
@@ -35,6 +36,7 @@ export class DocDetailsComponent implements OnInit {
     //fetch single doctor
     this.userService.getDocDetails(this.getParamId).subscribe(data=>{
       this.docDetails = data
+      this.loader = false;
     })
   }
 

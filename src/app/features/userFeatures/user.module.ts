@@ -40,7 +40,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     UserRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     UserService,

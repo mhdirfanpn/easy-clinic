@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { UserService } from '../../service/user.service';
-import { Doctor } from 'src/app/interface/doctorData/doctor';
+import { Doctor } from 'src/app/interface/doctor';
 import { Router } from '@angular/router';
 
 @Component({

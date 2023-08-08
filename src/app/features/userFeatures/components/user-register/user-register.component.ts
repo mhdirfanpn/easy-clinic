@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../service/user.service';
-import { UserData, ApiResponse } from 'src/app/interface/userData/user';
+import { UserData, ApiResponse } from 'src/app/interface/user';
 
 @Component({
   selector: 'app-user-register',
@@ -64,7 +64,6 @@ export class UserRegisterComponent implements OnInit {
     this.userService.registerUser(userDetails).subscribe((data: ApiResponse) => {
         !data.success ? (this.errorMessage = data.message) : '';
       });
-
     this.registrationForm.reset();
   }
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../service/user.service';
-import { ApiResponse } from 'src/app/interface/userData/user';
-import { UserData } from 'src/app/interface/userData/user';
+import { ApiResponse } from 'src/app/interface/user';
+import { UserData } from 'src/app/interface/user';
 
 @Component({
   selector: 'app-user-login',
