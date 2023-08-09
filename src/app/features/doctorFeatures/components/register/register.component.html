@@ -1,0 +1,193 @@
+<div class="min-h-screen justify-around flex flex-col lg:flex-row mb-5">
+    <div class="mt-6">
+      <img
+        alt="Login Image"
+        class="object-cover h-screen"
+        src="https://img.freepik.com/free-photo/front-view-young-female-doctor-white-medical-suit-with-stethoscope-wearing-white-protective-mask-white_140725-16566.jpg?w=1380&t=st=1681900985~exp=1681901585~hmac=99f7f6866c534d48d0a1afe255a5bfa2b1c4401579eb02e15335097575df62c0"
+      />
+    </div>
+    
+    <div
+      class="p-8 flex items-center justify-center w-full lg:max-w-3xl xl:max-w-4xl"
+    >
+      <div class="w-full max-w-md">
+        <h1 class="text-2xl font-bold">Register a new account</h1>
+        <div class="text-center" *ngIf="errorMessage" class="error">
+          {{ errorMessage }}
+        </div>
+        <form [formGroup]="registerForm">
+          <div class="mt-6">
+            <label for="userName">Username</label>
+            <input
+              type="text"
+              formControlName="userName"
+              placeholder="Enter your username"
+              [ngClass]="inputClass"
+            />
+            <div
+              *ngIf="
+              registerForm.get('userName')?.invalid &&
+              registerForm.get('userName')?.touched
+              "
+              class="error"
+            >
+              Username is required and must be at least 4 characters long.
+            </div>
+          </div>
+  
+          <div class="mt-6">
+            <label for="userName">Email</label>
+            <input
+              type="email"
+              formControlName="email"
+              placeholder="Enter your email"
+              [ngClass]="inputClass"
+            />
+            <div
+              *ngIf="
+              registerForm.get('email')?.invalid &&
+              registerForm.get('email')?.touched
+              "
+              class="error"
+            >
+              Invalid email format.
+            </div>
+          </div>
+  
+          <div class="mt-6">
+            <label for="userName">Date of birth</label>
+            <input
+              type="date"
+              formControlName="date"
+              placeholder="Enter your date of birth"
+              [ngClass]="inputClass"
+            />
+            <div
+              *ngIf="
+              registerForm.get('date')?.invalid &&
+              registerForm.get('date')?.touched
+              "
+              class="error"
+            >
+              Date of birth is required.
+            </div>
+          </div>
+  
+          <div class="mt-6">
+            <label for="">Contact Number</label>
+            <input
+              type="number"
+              formControlName="number"
+              placeholder="Enter your number"
+              [ngClass]="inputClass"
+            />
+            <div
+              *ngIf="
+              registerForm.get('number')?.invalid &&
+              registerForm.get('number')?.touched
+              "
+              class="error"
+            >
+              Invalid contact number. It should be 10 digits.
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <label for="">Medical Register Number</label>
+            <input
+              type="number"
+              formControlName="register"
+              placeholder="Enter your register number "
+              [ngClass]="inputClass"
+            />
+            <div
+              *ngIf="
+              registerForm.get('register')?.invalid &&
+              registerForm.get('register')?.touched
+              "
+              class="error"
+            >
+              Invalid register number. It should be in numbers.
+            </div>
+          </div>
+
+
+          <div class="mt-6">
+            <label for="specialty">Select your specialty</label>
+            <select
+              id="specialty"
+              formControlName="specialty"
+              class="mt-2 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5"
+              [ngClass]="{ 'invalid-border': registerForm.get('specialty')?.invalid && registerForm.get('specialty')?.touched }"
+            >
+              <option value="" disabled selected hidden>Choose a specialty</option>
+              <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+            </select>
+            <div
+              *ngIf="registerForm.get('specialty')?.invalid && registerForm.get('specialty')?.touched"
+              class="error"
+            >
+              Please select a specialty.
+            </div>
+          </div>
+          
+          <div class="mt-6">
+            <label for="experience">Select your experience</label>
+            <select
+              id="experience"
+              formControlName="experience"
+              class="mt-2 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5"
+              [ngClass]="{ 'invalid-border': registerForm.get('experience')?.invalid && registerForm.get('experience')?.touched }"
+            >
+              <option value="" disabled selected hidden>Choose an experience</option>
+              <option *ngFor="let exp of exp" [value]="exp.value">{{ exp.label }}</option>
+            </select>
+            <div
+              *ngIf="registerForm.get('experience')?.invalid && registerForm.get('experience')?.touched"
+              class="error"
+            >
+              Please select an experience.
+            </div>
+          </div>
+          
+  
+          <div class="mt-6">
+            <label for="userName">Password</label>
+            <input
+              type="password"
+              formControlName="password"
+              placeholder="Enter your password"
+              [ngClass]="inputClass"
+            />
+            <div
+              *ngIf="
+              registerForm.get('password')?.invalid &&
+              registerForm.get('password')?.touched
+              "
+              class="error"
+            >
+              Password must be at least 4 characters long with at least one
+              uppercase letter, one lowercase letter, one digit, and one special
+              character.
+            </div>
+          </div>
+  
+          <div class="mt-6 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:justify-between">
+              <p class="text-blue-500">
+                already have an account? <a routerLink="/doctor/login">log in</a>
+              </p>
+            </div>
+            <button
+              class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-500"
+              type="button" (click)="onRegister()"
+            >
+              SIGN IN
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div></div>
+  </div>
+  

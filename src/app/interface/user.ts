@@ -18,4 +18,5 @@ export interface ApiResponse {
   message?: string;
   token: string;
   adminToken: string;
+  doctorToken: string;
 }

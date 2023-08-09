@@ -1,0 +1,7 @@
+<div *ngIf="loader" class="loader-container">
+    <div class="loader"></div>
+  </div>
+  
+<div *ngIf="!loader" class="w-3/4 m-auto mt-40">
+  <app-appointment-table [sessions]="appointment"></app-appointment-table>
+</div>

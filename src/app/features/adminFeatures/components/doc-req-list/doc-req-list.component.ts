@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/shared/service/auth.service';
 import { AdminService } from '../../service/admin.service';
 import { Doctor } from 'src/app/interface/doctor';
 
@@ -13,7 +12,6 @@ export class DocReqListComponent implements OnInit {
   loader: boolean = true;
 
   constructor(
-    private authService: AuthService,
     private adminService: AdminService
   ) {}
 

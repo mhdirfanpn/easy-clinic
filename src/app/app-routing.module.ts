@@ -15,6 +15,13 @@ const routes: Routes = [
         (m) => m.AdminModule
       ),
   },
+  {
+    path: 'doctor',
+    loadChildren: () =>
+      import('./features/doctorFeatures/doctor.module').then(
+        (m) => m.DoctorModule
+      ),
+  },
   { path: '**', redirectTo: 'user/home', pathMatch: 'full' },
 ];
 

@@ -20,3 +20,17 @@ export interface Doctor {
   _id: string;
   appointments?: Appointment[]; // This property holds an array of appointments
 }
+
+export interface DoctorData {
+  date: string;
+  email: string;
+  experience: string;
+  profilePic?: string;
+  fullName: string;
+  number: string;
+  password?: string;
+  register?: string;
+  specialization?: string;
+  success?: string;
+  message?: string;
+}

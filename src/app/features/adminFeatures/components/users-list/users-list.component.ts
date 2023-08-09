@@ -13,7 +13,6 @@ export class UsersListComponent implements OnInit {
   loader: boolean = true;
 
   constructor(
-    private authService: AuthService,
     private adminService: AdminService
   ) {}
 

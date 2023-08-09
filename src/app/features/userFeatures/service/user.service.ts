@@ -7,8 +7,8 @@ import { tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Doctor } from 'src/app/interface/doctor';
-import { AuthService } from './auth.service';
-//import { AuthService } from 'src/app/shared/service/auth.service';
+import { Appointment } from 'src/app/interface/doctor';
+import { AuthService } from 'src/app/shared/service/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +19,12 @@ export class UserService {
     private authService: AuthService,
     private router: Router
   ) {}
+
+  token = this.authService.getDecodedAccessToken('user')
+
+  getUser(){
+    return this.authService.getDecodedAccessToken('user')
+  }
 
   //register new user
   registerUser(userDetails: UserData) {
@@ -67,5 +73,10 @@ export class UserService {
   //update user profile details
   updateProfile(body: string, id: any): Observable<any> {
     return this.http.put<any>(`${USER_API}/updateDetails/${id}`, body);
+  }
+
+  getAppointment(): Observable<Appointment> {
+    const user = this.getUser()
+    return this.http.get<Appointment>(`${USER_API}/getSession/${user.id}`);
   }
 }

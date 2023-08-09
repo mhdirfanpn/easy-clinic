@@ -18,6 +18,7 @@ import { FooterComponent } from 'src/app/features/userFeatures/components/footer
 import { DocDetailsComponent } from 'src/app/features/userFeatures/components/doc-details/doc-details.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { AppointmnetComponent } from './components/appointmnet/appointmnet.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     UserProfileComponent,
     DocCardsComponent,
     UserFormComponent,
+    AppointmnetComponent,
   ],
   imports: [
     CommonModule,

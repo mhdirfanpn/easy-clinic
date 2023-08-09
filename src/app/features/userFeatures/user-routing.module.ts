@@ -8,12 +8,12 @@ import { UserGuard } from 'src/app/shared/guard/authUser/user.guard';
 import { DocDetailsComponent } from 'src/app/features/userFeatures/components/doc-details/doc-details.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { AppointmnetComponent } from './components/appointmnet/appointmnet.component';
 
 const routes: Routes = [
   {
     path: 'register',
     component: UserRegisterComponent,
-    canActivate: [UserGuard],
   },
   { path: 'login', component: UserLoginComponent, canActivate: [UserGuard] },
   {
@@ -34,6 +34,11 @@ const routes: Routes = [
       {
         path: 'editDetails/:id',
         component: UserFormComponent,
+        canActivate: [UserGuard],
+      },
+      {
+        path: 'appointment',
+        component: AppointmnetComponent,
         canActivate: [UserGuard],
       },
     ],

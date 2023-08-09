@@ -28,7 +28,6 @@ export class AdminService {
     return this.http.post<ApiResponse>(`${ADMIN_API}/login`, data).pipe(
       tap((data) => {
         if (data.success) {
-          console.log(data);
           this.authService.setAdminToken(data.adminToken);
         }
       })
