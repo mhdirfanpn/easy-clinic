@@ -5,6 +5,7 @@ import jwt_decode from 'jwt-decode';
 @Injectable({
   providedIn: 'root',
 })
+
 export class AuthService {
   private readonly JWT_TOKEN_KEY = 'userToken';
   private readonly DOCTOR_TOKEN_KEY = 'doctorToken';

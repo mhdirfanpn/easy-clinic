@@ -26,8 +26,7 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit(): void {
     //get the user details
-    const userId = this.route.snapshot.paramMap.get('id');
-    this.userService.getUserDetails(userId).subscribe((data) => {
+    this.userService.getUserDetails().subscribe((data) => {
       this.user = data;
       this.loader = false;
 
@@ -60,7 +59,7 @@ export class UserFormComponent implements OnInit {
       this.formdata.append('image', file);
       this.loader = true;
       this.userService
-        .updateProfileImg(this.formdata, id)
+        .updateProfileImg(this.formdata)
         .subscribe((response) => {
           this.user = response;
           this.loader = false;
@@ -70,13 +69,13 @@ export class UserFormComponent implements OnInit {
   }
 
   //update user details
-  updateDetails(id: any) {
+  updateDetails() {
     if (this.updateForm.invalid) {
       this.errorMessage = 'All fields are required';
       return;
     }
     this.loader = true;
-    this.userService.updateProfile(this.updateForm.value, id).subscribe();
+    this.userService.updateProfile(this.updateForm.value).subscribe();
     setTimeout(() => {
       this.loader = false;
       this.router.navigate(['user/profile']);

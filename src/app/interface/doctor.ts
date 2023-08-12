@@ -4,6 +4,23 @@ export interface Appointment {
   times: string[]; // This should be an array of strings representing time slots
 }
 
+export interface Appointments {
+  _id: string;
+  bookedDate: string;
+  doctorId: string;
+  doctorName: string;
+  endTime: string;
+  link: string;
+  plan: string;
+  sessionDate: string;
+  startTime: string;
+  timeSlot: string;
+  userId: string;
+  userName: string;
+  __v: number;
+}
+
+
 export interface Doctor {
   date: string;
   email: string;

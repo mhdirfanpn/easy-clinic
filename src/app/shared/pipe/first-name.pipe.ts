@@ -13,5 +13,4 @@ export class FirstNamePipe implements PipeTransform {
     const fullNameParts = value.split(' ');
     return fullNameParts[0];
   }
-
 }

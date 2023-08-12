@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/service/auth.service';
-import { DoctorService } from '../../service/doctor.service';
-import { Doctor } from 'src/app/interface/doctor';
+
 
 @Component({
   selector: 'app-doctor-nav',
@@ -9,18 +8,10 @@ import { Doctor } from 'src/app/interface/doctor';
   styleUrls: ['./doctor-nav.component.css'],
 })
 export class DoctorNavComponent implements OnInit {
-  
-  constructor(
-    private authService: AuthService,
-    private doctorService: DoctorService
-  ) {}
 
-  doctor!: Doctor;
+  constructor(private authService: AuthService) {}
 
-  //get doctor details
-  ngOnInit(): void {
-    this.doctorService.getDetails().subscribe((data) => (this.doctor = data));
-  }
+  ngOnInit(): void {}
 
   //doctor logout
   doctotorLogout() {

@@ -24,9 +24,9 @@ export class UserLoginComponent implements OnInit {
 
   ngOnInit() {
     this.registrationForm = this.formBuilder.group({
-      email: ['realme@gmail.com', [Validators.required, Validators.pattern(/^[\w-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,4}$/)]],
+      email: ['irfan@gmail.com', [Validators.required, Validators.pattern(/^[\w-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,4}$/)]],
       password: [
-        'Re@123',
+        'Irfan@123',
         [
           Validators.required,
           Validators.minLength(6),

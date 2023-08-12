@@ -5,6 +5,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module'; //shared module
 import { FormsModule } from '@angular/forms';
 import { UserService } from 'src/app/features/userFeatures/service/user.service';
+import { PaymentService } from './service/payment.service';
 
 import { UserLoginComponent } from 'src/app/features/userFeatures/components/user-login/user-login.component';
 import { UserRegisterComponent } from 'src/app/features/userFeatures/components/user-register/user-register.component';
@@ -19,6 +20,8 @@ import { DocDetailsComponent } from 'src/app/features/userFeatures/components/do
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { AppointmnetComponent } from './components/appointmnet/appointmnet.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { PaymnetSuccessComponent } from './components/paymnet-success/paymnet-success.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,8 @@ import { AppointmnetComponent } from './components/appointmnet/appointmnet.compo
     DocCardsComponent,
     UserFormComponent,
     AppointmnetComponent,
+    PaymentComponent,
+    PaymnetSuccessComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +48,6 @@ import { AppointmnetComponent } from './components/appointmnet/appointmnet.compo
     FormsModule,
     SharedModule,
   ],
-  providers: [UserService],
+  providers: [UserService, PaymentService],
 })
 export class UserModule {}

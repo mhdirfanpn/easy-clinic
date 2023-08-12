@@ -9,6 +9,8 @@ import { DocDetailsComponent } from 'src/app/features/userFeatures/components/do
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { AppointmnetComponent } from './components/appointmnet/appointmnet.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { PaymnetSuccessComponent } from './components/paymnet-success/paymnet-success.component';
 
 const routes: Routes = [
   {
@@ -32,13 +34,23 @@ const routes: Routes = [
         canActivate: [UserGuard],
       },
       {
-        path: 'editDetails/:id',
+        path: 'editDetails',
         component: UserFormComponent,
         canActivate: [UserGuard],
       },
       {
         path: 'appointment',
         component: AppointmnetComponent,
+        canActivate: [UserGuard],
+      },
+      {
+        path: 'payment',
+        component: PaymentComponent,
+        canActivate: [UserGuard],
+      },
+      {
+        path: 'success',
+        component: PaymnetSuccessComponent,
         canActivate: [UserGuard],
       },
     ],

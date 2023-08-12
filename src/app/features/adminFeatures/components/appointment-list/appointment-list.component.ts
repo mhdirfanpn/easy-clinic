@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../service/admin.service';
+import { Appointment } from 'src/app/interface/doctor';
 
 @Component({
   selector: 'app-appointment-list',
@@ -9,14 +10,13 @@ import { AdminService } from '../../service/admin.service';
 export class AppointmentListComponent implements OnInit {
   constructor(private adminService: AdminService) {}
 
-  appointmnets: any = [];
+  appointments: Appointment[] = [];
   loader: boolean = true;
 
   //get appointments
   ngOnInit(): void {
     this.adminService.getApppointments().subscribe((data) => {
-      this.appointmnets = data;
-      console.log(this.appointmnets);
+      this.appointments = data;
       this.loader = false;
     });
   }

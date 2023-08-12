@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { AuthService } from '../../service/auth.service';
-import { AuthService } from 'src/app/shared/service/auth.service';
 import { UserService } from '../../service/user.service';
 import { UserData } from 'src/app/interface/user';
 import { Router } from '@angular/router';
@@ -16,23 +14,20 @@ export class UserProfileComponent implements OnInit {
   loader: boolean = true;
 
   constructor(
-    private authService: AuthService,
     private userService: UserService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.token = this.authService.getDecodedAccessToken('user');
-    console.log(this.token);
     //fetch the userDetails
-    this.userService.getUserDetails(this.token.id).subscribe((data) => {
+    this.userService.getUserDetails().subscribe((data) => {
       this.user = data;
       this.loader = false;
     });
   }
 
-  goToEditPage(id: any) {
+  goToEditPage() {
     // Navigate to the edit page and pass the 'user' object as a route parameter
-    this.router.navigate(['/user/editDetails', id]);
+    this.router.navigate(['/user/editDetails']);
   }
 }

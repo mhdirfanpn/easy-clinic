@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DoctorService } from '../../service/doctor.service';
-import { Doctor } from 'src/app/interface/doctor';
+import { DoctorData } from 'src/app/interface/doctor';
 import { AuthService } from 'src/app/shared/service/auth.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/shared/service/auth.service';
 export class HomeComponent implements OnInit {
   constructor(private router: Router, private doctorService: DoctorService, private authService: AuthService) {}
 
-  doctor!: Doctor;
+  doctor!: DoctorData;
   loader: boolean = true;
   token: any
 

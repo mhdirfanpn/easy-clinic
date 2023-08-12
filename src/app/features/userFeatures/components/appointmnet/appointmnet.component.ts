@@ -11,13 +11,14 @@ export class AppointmnetComponent implements OnInit {
 
   constructor(private userService: UserService) { }
 
-  appointment! : Appointment
+  appointment : Appointment[] = []
   loader: boolean = true
 
   ngOnInit(): void {
     //get the user appointment
     this.userService.getAppointment().subscribe(data=>{
       this.appointment = data
+      console.log(data)
       this.loader = false
     })
   }

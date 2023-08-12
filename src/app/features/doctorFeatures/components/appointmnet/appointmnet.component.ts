@@ -11,7 +11,8 @@ export class AppointmnetComponent implements OnInit {
   
   constructor(private doctorService: DoctorService) {}
 
-  appointment!: Appointment;
+  appointment: Appointment[] = [];
+  
   loader: boolean = true;
 
   //get appointments

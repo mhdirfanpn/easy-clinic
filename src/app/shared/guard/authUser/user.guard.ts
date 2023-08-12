@@ -27,7 +27,7 @@ export class UserGuard implements CanActivate {
     if (this.authService.isLoggedIn()) {
       //checking if user is blocked or not
       const token = this.authService.getDecodedAccessToken('user');
-      this.userService.getUserDetails(token.id).subscribe((user) => {
+      this.userService.getUserDetails().subscribe((user) => {
         user.isBlocked ? this.authService.logout('user') : '';
       });
 

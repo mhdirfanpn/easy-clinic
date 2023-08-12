@@ -14,10 +14,12 @@ import { StatisticsData } from 'src/app/interface/statics';
   providedIn: 'root',
 })
 export class AdminService {
+
   constructor(
     private http: HttpClient,
     private authService: AuthService,
   ) {}
+
 
   //admin login
   adminLogin(email: string, password: string) {
@@ -34,40 +36,48 @@ export class AdminService {
     );
   }
 
+
   //get all users
   allUsers(): Observable<UserData[]> {
     return this.http.get<UserData[]>(`${ADMIN_API}/allUsers`);
   }
+
 
   //block / unBlock users
   blockUser(id: any) {
     return this.http.get(`${ADMIN_API}/blockUser/${id}`);
   }
 
+
   //get verified doctors
   allDoctors(): Observable<Doctor[]> {
     return this.http.get<Doctor[]>(`${ADMIN_API}/allDoctors`);
   }
+
 
   //get doctor requests
   docRequest(): Observable<Doctor[]> {
     return this.http.get<Doctor[]>(`${ADMIN_API}/doctorsRequest`);
   }
 
+
   //get single doctor
   getDoctor(id: string): Observable<Doctor> {
     return this.http.get<Doctor>(`${ADMIN_API}/getDoctor/${id}`);
   }
+
 
   //approve doctor request
   verifyDoctor(id: string) {
     return this.http.put(`${ADMIN_API}/verifyDoctor`, { doctorId: id });
   }
 
+
   //get all appointments
-  getApppointments(): Observable<Appointment> {
-    return this.http.get<Appointment>(`${ADMIN_API}/appointment`);
+  getApppointments(): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(`${ADMIN_API}/appointment`);
   }
+  
 
   //get dashboard values
   getDashboard(): Observable<StatisticsData> {

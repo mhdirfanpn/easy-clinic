@@ -20,10 +20,12 @@ export class DoctorService {
     private router: Router
   ) {}
 
+
   //get the doctor data from token
   getDoctor() {
     return this.authService.getDecodedAccessToken('doctor');
   }
+
 
   //registe new doctor
   registerUser(DoctorDetails: DoctorData) {
@@ -36,6 +38,7 @@ export class DoctorService {
       );
   }
 
+
   //doctor login
   loginUser(email: string, password: string) {
     const data = {
@@ -45,18 +48,19 @@ export class DoctorService {
     return this.http.post<ApiResponse>(`${DOCTOR_API}/login`, data).pipe(
       tap((data) => {
         if (data.success) {
-          console.log(data);
           this.authService.setDoctorToken(data.doctorToken);
         }
       })
     );
   }
 
+
   //get doctor details
-  getDetails(): Observable<any> {
+  getDetails(): Observable<DoctorData> {
     const doctor = this.getDoctor();
-    return this.http.get<any>(`${DOCTOR_API}/details/${doctor.id}`);
+    return this.http.get<DoctorData>(`${DOCTOR_API}/details/${doctor.id}`);
   }
+
 
   //update doctor detials
   updateDetails(doctorDetails: DoctorData): Observable<DoctorData> {
@@ -67,18 +71,20 @@ export class DoctorService {
     );
   }
 
+
   //upgate doctor image
-  updateProfileImage(formData: string): Observable<any> {
+  updateProfileImage(formData: string): Observable<DoctorData> {
     const doctor = this.getDoctor();
-    return this.http.put<any>(
+    return this.http.put<DoctorData>(
       `${DOCTOR_API}/updateDoctorImage/${doctor.id}`,
       formData
     );
   }
 
+  
   //get doctor appointments
-  getAppointment(): Observable<Appointment> {
+  getAppointment(): Observable<Appointment[]> {
     const doctor = this.getDoctor();
-    return this.http.get<Appointment>(`${DOCTOR_API}/appointment/${doctor.id}`);
+    return this.http.get<Appointment[]>(`${DOCTOR_API}/appointment/${doctor.id}`);
   }
 }
