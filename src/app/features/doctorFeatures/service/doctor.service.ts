@@ -87,4 +87,15 @@ export class DoctorService {
     const doctor = this.getDoctor();
     return this.http.get<Appointment[]>(`${DOCTOR_API}/appointment/${doctor.id}`);
   }
+
+  //set time slot
+  setTimeSlot(selectedDate:string,selectedTimings:string[]){
+    const doctor = this.getDoctor();
+    const body = {
+      selectedDate,
+      selectedTimings,
+      id: doctor.id
+    }
+    return this.http.post(`${DOCTOR_API}/timeSlot`,body)
+  }
 }
