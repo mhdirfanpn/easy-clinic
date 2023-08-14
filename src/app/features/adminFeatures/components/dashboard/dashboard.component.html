@@ -1,0 +1,7 @@
+<div *ngIf="loader" class="loader-container">
+    <div class="loader"></div>
+  </div>
+  <div *ngIf="!loader">
+    <app-dash-datas [dashData]="statics"></app-dash-datas>
+    <app-chart [dashData]="statics"></app-chart>
+  </div>

@@ -1,0 +1,115 @@
+<div *ngIf="loader" class="loader-container">
+  <div class="loader"></div>
+</div>
+
+<section *ngIf="!loader" class="bg-gray-50 my-20">
+ 
+
+    <div
+      class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
+    >
+      <div
+        class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-200 dark:border-gray-200"
+      >
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+        
+
+          <div class="text-center image-container">
+            <img src="{{ user?.profilePic }}" alt="Avatar" />
+
+            <label
+              class="relative inline-flex items-center justify-center mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-gray-900 dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 p-3 text-white mt-5"
+            >
+              Choose Image
+              <input
+                type="file"
+                id="image"
+                name="image"
+                accept="image/*"
+                class="opacity-0 absolute h-0 w-0"
+                (change)="onImageSelected($event, user?._id)"
+              />
+            </label>
+          </div>
+
+          <form [formGroup]="updateForm" class="space-y-4 md:space-y-6">
+            <div>
+              <label
+                htmlFor="name"
+                class="block mb-2 text-sm font-medium "
+              >
+                Full Name
+              </label>
+              <input
+                type="text"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                formControlName="userName"
+              />
+              <div
+                *ngIf="
+                  updateForm.get('userName')?.invalid &&
+                  updateForm.get('userName')?.touched
+                "
+                class="error"
+              >
+                Username is required and must be at least 4 characters long.
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="email"
+                class="block mb-2 text-sm font-medium "
+              >
+                Your Email
+              </label>
+              <input
+                type="email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                formControlName="email"
+              />
+              <div
+                *ngIf="
+                  updateForm.get('email')?.invalid &&
+                  updateForm.get('email')?.touched
+                "
+                class="error"
+              >
+                Invalid email format.
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="mobile"
+                class="block mb-2 text-sm font-medium"
+              >
+                Mobile
+              </label>
+              <input
+                type="tel"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                formControlName="number"
+              />
+              <div
+                *ngIf="
+                  updateForm.get('number')?.invalid &&
+                  updateForm.get('number')?.touched
+                "
+                class="error"
+              >
+                Invalid contact number. It should be 10 digits.
+              </div>
+            </div>
+
+            <button
+              type="button"
+              (click)="updateDetails()"
+              class="w-full bg-blue-200 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+            >
+              Save Changes
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+</section>

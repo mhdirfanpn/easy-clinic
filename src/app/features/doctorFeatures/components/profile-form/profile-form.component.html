@@ -1,0 +1,118 @@
+<div *ngIf="loader" class="loader-container">
+    <div class="loader"></div>
+  </div>
+  
+<div
+  class="w-3/4 mx-auto mt-10 border border-gray-300 bg-gray-100 shadow-md p-4"
+>
+  <div class="flex justify-between">
+    <div class="content">
+      <div class="image">
+        <img
+          class="rounded-md h-60"
+          src="{{doctor.profilePic}}"
+          alt=""
+        />
+      </div>
+      <label
+        class="relative inline-flex text-blue-400 hover:cursor-pointer items-center justify-center mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group mt-5"
+      >
+        Choose Image
+        <input
+          type="file"
+          id="image"
+          name="image"
+          accept="image/*"
+          class="opacity-0 absolute h-0 w-0"
+          (change)="onImageSelected($event)"
+        />
+      </label>
+
+      
+        <form [formGroup]="registerForm">
+            <div class="mt-6 grid grid-cols-2 gap-y-7 gap-x-20">
+        <div class="grid grid-row gap-y-3">
+          <label class="text-gray-700">Name</label>
+          <input
+            type="text"
+            formControlName="name"
+            class="border border-gray-300 p-2 rounded-md mt-1 text-gray-500"
+          />
+          <div
+              *ngIf="
+              registerForm.get('name')?.invalid &&
+              registerForm.get('name')?.touched
+              "
+              class="error"
+            >
+              invalid user name.
+            </div>
+        </div>
+ 
+        <div class="grid grid-row gap-y-3">
+          <label class="text-gray-700">Experience</label>
+          <input
+            type="text"
+            formControlName="experience"
+            class="border border-gray-300 p-2 rounded-md mt-1 text-gray-500"
+          />
+          <div
+          *ngIf="
+          registerForm.get('experience')?.invalid &&
+          registerForm.get('experience')?.touched
+          "
+          class="error"
+        >
+          invalid format.
+        </div>
+        </div>
+
+        <div class="grid grid-row gap-y-3">
+          <label class="text-gray-700">Email</label>
+          <input
+            type="email"
+            formControlName="email"
+            class="border border-gray-300 p-2 rounded-md mt-1 text-gray-500"
+          />
+          <div
+              *ngIf="
+              registerForm.get('email')?.invalid &&
+              registerForm.get('email')?.touched
+              "
+              class="error"
+            >
+              invalid email format.
+            </div>
+        </div>
+
+        <div class="grid grid-row gap-y-3">
+          <label class="text-gray-700">Mobile</label>
+          <input
+            type="number"
+            formControlName="number"
+            class="border border-gray-300 p-2 rounded-md mt-1 text-gray-500"
+          />
+          <div
+              *ngIf="
+              registerForm.get('number')?.invalid &&
+              registerForm.get('number')?.touched
+              "
+              class="error"
+            >
+              invalid contact number
+            </div>
+        </div>
+
+        <div (click)="onUpdate()">
+          <button
+            type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            update
+          </button>
+        </div>
+    </div>
+    </form>
+      </div>
+  </div>
+</div>

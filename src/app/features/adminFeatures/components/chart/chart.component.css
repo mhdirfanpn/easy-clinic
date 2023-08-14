@@ -1,0 +1,6 @@
+.chart-container{
+    margin-top: 50px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}

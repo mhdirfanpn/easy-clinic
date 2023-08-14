@@ -1,0 +1,45 @@
+
+  
+<div class="center-table mt-8 h-screen">
+    <p class="text-center font-semibold text-3xl text-blue-600">DOCTORS - LIST</p>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+    <table class="w-full text-sm text-left">
+        <thead class="text-xs">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Doctor Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Email
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Number
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Details
+                </th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let d of doctorsData" class="bg-white border-b hover:bg-gray-50">
+                <td class="px-6 py-4 flex">
+                  <img class="h-10 w-10 rounded-full" [src]="d.profilePic" alt="">
+                  <span class="p-2">DR. {{d.fullName | uppercase}}</span>
+                </td>
+                <td class="px-6 py-4">
+                    ✉ {{d.email}}
+                </td>
+                <td class="px-6 py-4">
+                    📞 {{d.number}}
+                </td>
+                <td class="px-6 py-4 text-blue-600 hover:cursor-pointer" (click)="viewDoctor(d._id)">
+                 View Details
+                </td>
+              </tr>
+              
+        </tbody>
+    </table>
+</div>
+</div>
+  

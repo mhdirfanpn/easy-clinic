@@ -1,0 +1,17 @@
+<div *ngIf="loader" class="loader-container">
+  <div class="loader"></div>
+</div>
+
+<div *ngIf="appointments.length > 0">
+  <app-appointment-table [sessions]="appointments"></app-appointment-table>
+</div>
+
+<div
+  *ngIf="appointments.length === 0"
+  class="flex align-middle justify-center h-screen"
+>
+  <img
+    src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-536.jpg?w=826&t=st=1691641587~exp=1691642187~hmac=b4070a5e231ecc3ea476896e595f568b03f0f475676e00985f38400911bd2268"
+    alt="no-data"
+  />
+</div>

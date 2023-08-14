@@ -1,0 +1,48 @@
+  
+<div class="center-table mt-8 h-screen">
+    <p class="text-center font-semibold text-3xl text-blue-600">APPOINTMENTS</p>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+    <table class="w-full text-sm text-left">
+        <thead class="text-xs">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Doctor
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Patient
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Booked Date
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Session Date
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Time Slot
+                </th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let a of sessions" class="bg-white border-b hover:bg-gray-50">
+                <td class="px-6 py-5 flex">
+                  DR. {{a.doctorName | uppercase}}
+                </td>
+                <td class="px-6 py-5">
+                   {{a.userName | uppercase}}
+                </td>
+                <td class="px-6 py-5">
+                    {{a.bookedDate}}
+                </td>
+                <td class="px-6 py-5">
+                    {{a.sessionDate}}
+                </td>
+                <td class="px-6 py-5">
+                    {{a.timeSlot}}
+                </td>
+              </tr>
+              
+        </tbody>
+    </table>
+</div>
+</div>
