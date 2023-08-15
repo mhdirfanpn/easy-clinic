@@ -22,6 +22,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { AppointmnetComponent } from './components/appointmnet/appointmnet.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PaymnetSuccessComponent } from './components/paymnet-success/paymnet-success.component';
+import { UserChatComponent } from './components/user-chat/user-chat.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { PaymnetSuccessComponent } from './components/paymnet-success/paymnet-su
     AppointmnetComponent,
     PaymentComponent,
     PaymnetSuccessComponent,
+    UserChatComponent,
   ],
   imports: [
     CommonModule,

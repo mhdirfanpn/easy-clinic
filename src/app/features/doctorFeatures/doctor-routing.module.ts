@@ -8,6 +8,7 @@ import { DoctorLayoutComponent } from './components/doctor-layout/doctor-layout.
 import { ProfileFormComponent } from './components/profile-form/profile-form.component';
 import { AppointmnetComponent } from './components/appointmnet/appointmnet.component';
 import { TimeSlotComponent } from './components/time-slot/time-slot.component';
+import { DocChatComponent } from './components/doc-chat/doc-chat.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -31,6 +32,11 @@ const routes: Routes = [
       {
         path: 'time-slot',
         component: TimeSlotComponent,
+        canActivate: [DoctorGuard],
+      },
+      {
+        path: 'chat',
+        component: DocChatComponent,
         canActivate: [DoctorGuard],
       },
     ],

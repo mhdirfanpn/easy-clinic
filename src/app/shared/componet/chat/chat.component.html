@@ -1,0 +1,53 @@
+<div *ngIf="loader" class="loader-container">
+    <div class="loader"></div>
+  </div>
+<div *ngIf="!loader" class='messenger'>
+
+    <div class='chatMenu'>
+        <div class='chatMenuWrapper'>
+            <input type="text" class='chatMenuInput' placeholder='Search for counselors'/>
+            <div *ngFor="let conversation of conversations" (click)="switchChat(conversation)">
+                <app-conversation [conversation]="conversation" [currentUser]="token.id" [role]="role"></app-conversation>
+            </div>
+        </div>
+    </div>
+
+    <div class='chatBox'>
+        <div class='chatBoxWrapper' *ngIf="isActive">
+
+            <div class="chatBoxTop mt-20">
+                <div *ngIf="currentChat">
+                    <app-message [messages]="messages" [own]="token.id"></app-message>
+                </div>
+            </div>
+
+            <div class="chatBoxBottom">
+                <textarea class='chatMessageInput' 
+                placeholder='write something...'
+                [(ngModel)]="newMessage"
+                ></textarea>
+                <button class='submitButton'(click)="sendMessage()">Send</button>
+            </div> 
+
+        </div>
+
+        <div class="flex items-center justify-center mt-80 ml-40">
+            <div class="text-center">
+              <div class="text-green-500" *ngIf="!isActive">Please select any conversation or book appointment</div>
+            </div>
+          </div>
+    </div>
+
+    <div class='chatMenu'>
+        <div class='chatMenuWrapper'>
+            <div >
+                <app-active-converasation (createConversation)="handleCreateConversation($event)" [currentUser]="token.id" [role]="role"></app-active-converasation>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+  

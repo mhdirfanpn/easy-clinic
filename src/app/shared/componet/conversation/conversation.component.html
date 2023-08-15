@@ -1,0 +1,19 @@
+
+<div class='conversation'>
+    <div class='chatOnlineImgContainer'>
+        <ng-container *ngIf="chatter?.profilePic; else defaultAvatar">
+            <img src="{{[chatter.profilePic]}}" alt="" class='conversationImg'/>
+        </ng-container>
+
+        <ng-template #defaultAvatar>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" class='conversationImg'/>
+        </ng-template>
+        
+        <div class='chatOnlineBadge'></div>
+    </div>
+    <span class="conversationName ml-12">
+        {{ role === 'user' ? chatter?.fullName : chatter?.userName }}
+    </span>
+    
+</div>
+

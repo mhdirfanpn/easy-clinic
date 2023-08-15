@@ -1,0 +1,17 @@
+<div *ngIf="chatter?.id" class='conversation' (click)="newConversation()">
+    <div class='chatOnlineImgContainer'>
+        <ng-container *ngIf="chatter?.profilePic; else defaultAvatar">
+            <img src="{{[chatter?.profilePic]}}" alt="" class='conversationImg'/>
+        </ng-container>
+
+        <ng-template #defaultAvatar>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" class='conversationImg'/>
+        </ng-template>
+        
+        <div class='chatOnlineBadge'></div>
+    </div>
+    <span class="conversationName ml-12">
+        {{chatter?.fullName}}
+    </span> 
+</div>
+<div *ngIf="!chatter?.id" class="text-red-500 font-bold text-2xl">No active session</div>

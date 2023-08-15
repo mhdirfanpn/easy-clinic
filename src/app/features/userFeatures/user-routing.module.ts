@@ -11,6 +11,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { AppointmnetComponent } from './components/appointmnet/appointmnet.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PaymnetSuccessComponent } from './components/paymnet-success/paymnet-success.component';
+import { UserChatComponent } from './components/user-chat/user-chat.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,11 @@ const routes: Routes = [
       {
         path: 'success',
         component: PaymnetSuccessComponent,
+        canActivate: [UserGuard],
+      },
+      {
+        path: 'chat',
+        component: UserChatComponent,
         canActivate: [UserGuard],
       },
     ],

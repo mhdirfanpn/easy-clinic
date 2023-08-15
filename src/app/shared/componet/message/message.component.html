@@ -1,0 +1,17 @@
+<div class="message">
+    <div
+    *ngFor="let message of messages"
+    class="message-item"
+  >
+    <div [ngClass]="message.sender === own ? 'message own' : 'message'">
+        <div class="messageTop">
+            <img class='messageImg' src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" />
+            <p class='messageTxt'>{{ message.text }}</p>
+        </div>
+    </div>
+    
+<div class="messageBottom"></div>
+  </div>
+    
+</div>
+
