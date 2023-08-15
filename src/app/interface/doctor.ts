@@ -21,6 +21,7 @@ export interface Appointments {
 }
 
 
+
 export interface Doctor {
   date: string;
   email: string;

@@ -10,6 +10,7 @@ import { AppointmnetComponent } from './components/appointmnet/appointmnet.compo
 import { TimeSlotComponent } from './components/time-slot/time-slot.component';
 import { DocChatComponent } from './components/doc-chat/doc-chat.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
@@ -34,11 +35,14 @@ const routes: Routes = [
         component: TimeSlotComponent,
         canActivate: [DoctorGuard],
       },
+
       {
         path: 'chat',
         component: DocChatComponent,
         canActivate: [DoctorGuard],
       },
+
+
     ],
   },
 ];

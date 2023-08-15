@@ -13,8 +13,6 @@ import { DoctorLayoutComponent } from './components/doctor-layout/doctor-layout.
 import { DoctorNavComponent } from './components/doctor-nav/doctor-nav.component';
 import { ProfileFormComponent } from './components/profile-form/profile-form.component';
 import { AppointmnetComponent } from './components/appointmnet/appointmnet.component';
-import { TimeSlotComponent } from './components/time-slot/time-slot.component';
-import { DocChatComponent } from './components/doc-chat/doc-chat.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +23,6 @@ import { DocChatComponent } from './components/doc-chat/doc-chat.component';
     DoctorNavComponent,
     ProfileFormComponent,
     AppointmnetComponent,
-    TimeSlotComponent,
-    DocChatComponent,
   ],
   imports: [
     CommonModule,
