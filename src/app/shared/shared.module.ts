@@ -11,11 +11,13 @@ import { MessageComponent } from './componet/message/message.component';
 import { SocketService } from './service/socket.service';
 import { FormsModule } from '@angular/forms';
 import { ActiveConverasationComponent } from './componet/active-converasation/active-converasation.component';
+import { FilterPipe } from './pipe/filter.pipe';
+import { SearchComponent } from './componet/search/search.component';
 
 @NgModule({
-  declarations: [AppointmentTableComponent, FirstNamePipe, ChatComponent, ConversationComponent, MessageComponent, ActiveConverasationComponent],
+  declarations: [AppointmentTableComponent, FirstNamePipe, ChatComponent, ConversationComponent, MessageComponent, ActiveConverasationComponent, FilterPipe, SearchComponent],
   imports: [CommonModule, HttpClientModule,FormsModule],
-  exports: [AppointmentTableComponent, ChatComponent, FirstNamePipe],
+  exports: [AppointmentTableComponent, ChatComponent, FirstNamePipe,FilterPipe,SearchComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

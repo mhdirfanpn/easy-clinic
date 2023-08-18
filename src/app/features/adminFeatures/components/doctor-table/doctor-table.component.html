@@ -3,6 +3,7 @@
 <div class="center-table mt-8 h-screen">
     <p class="text-center font-semibold text-3xl text-blue-600">DOCTORS - LIST</p>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+        <app-search (searchChanged)="onSearchChanged($event)"></app-search>
     <table class="w-full text-sm text-left">
         <thead class="text-xs">
             <tr>
@@ -22,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let d of doctorsData" class="bg-white border-b hover:bg-gray-50">
+            <tr *ngFor="let d of doctorsData | filter : search" class="bg-white border-b hover:bg-gray-50">
                 <td class="px-6 py-4 flex">
                   <img class="h-10 w-10 rounded-full" [src]="d.profilePic" alt="">
                   <span class="p-2">DR. {{d.fullName | uppercase}}</span>

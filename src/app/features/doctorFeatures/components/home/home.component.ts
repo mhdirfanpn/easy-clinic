@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DoctorService } from '../../service/doctor.service';
 import { DoctorData } from 'src/app/interface/doctor';
-import { AuthService } from 'src/app/shared/service/auth.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { getProfile } from '../state/profile/profile.selector';
+import { loadDocProfile } from '../state/profile/profile.action';
+
 
 @Component({
   selector: 'app-home',
@@ -10,22 +13,31 @@ import { AuthService } from 'src/app/shared/service/auth.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private router: Router, private doctorService: DoctorService, private authService: AuthService) {}
 
-  doctor!: DoctorData;
+  constructor(private router: Router, private store : Store) {}
+
+  doctor$!: Observable<DoctorData | null>;
   loader: boolean = true;
-  token: any
 
   //get doctor details
   ngOnInit(): void {
-    this.doctorService.getDetails().subscribe((data) => {
-      this.doctor = data;
-      this.loader = false;
-    });
+    this.doctor$ = this.store.select(getProfile);
+
+
+    this.store.dispatch(loadDocProfile());
+    this.timeOut()
   }
 
   //navigate to edit page
   editProfile() {
     this.router.navigate(['doctor/profile']);
+  }
+
+
+  timeOut(){
+    setTimeout(()=>{
+      this.loader = false
+    },700)
+
   }
 }

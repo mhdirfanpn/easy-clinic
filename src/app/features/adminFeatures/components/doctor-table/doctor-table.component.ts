@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/shared/service/auth.service';
-import { AdminService } from '../../service/admin.service';
 import { Router } from '@angular/router';
 import { Doctor } from 'src/app/interface/doctor';
 import { Input } from '@angular/core';
@@ -12,6 +10,7 @@ import { Input } from '@angular/core';
 })
 export class DoctorTableComponent implements OnInit {
   @Input() doctorsData: Doctor[] = [];
+  search! : string
 
   constructor(private router: Router) {}
 
@@ -20,5 +19,9 @@ export class DoctorTableComponent implements OnInit {
   //view doctor details
   viewDoctor(id: string) {
     this.router.navigate(['/admin/docDetails', id]);
+  }
+
+  onSearchChanged(searchValue:string){
+    this.search = searchValue
   }
 }

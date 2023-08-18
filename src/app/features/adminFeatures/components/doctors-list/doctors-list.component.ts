@@ -7,6 +7,7 @@ import { Doctor } from 'src/app/interface/doctor';
   templateUrl: './doctors-list.component.html',
   styleUrls: ['./doctors-list.component.css'],
 })
+
 export class DoctorsListComponent implements OnInit {
   doctors: Doctor[] = [];
   loader: boolean = true;

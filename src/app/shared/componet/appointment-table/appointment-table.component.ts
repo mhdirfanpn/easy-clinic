@@ -10,6 +10,11 @@ export class AppointmentTableComponent implements OnInit {
 
   //data from parent components
   @Input() sessions: any;
+  search! : string
+
+  onSearchChanged(searchValue: string): void {
+    this.search = searchValue
+  }
 
   constructor() {}
 

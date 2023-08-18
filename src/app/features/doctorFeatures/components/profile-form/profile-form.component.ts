@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DoctorData } from 'src/app/interface/doctor';
 import { DoctorService } from '../../service/doctor.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { getProfile } from '../state/profile/profile.selector';
 
 @Component({
   selector: 'app-profile-form',
@@ -14,11 +17,13 @@ export class ProfileFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private doctorService: DoctorService,
     private router: Router,
+    private store : Store
   ) {}
 
+  doctor$!: Observable<DoctorData | null>;
   registerForm!: FormGroup;
   loader: Boolean = true;
-  doctor!: DoctorData;
+  doctor!: DoctorData | null;
   errorMessage: string | undefined;
   formdata: any;
   token : any
@@ -26,17 +31,17 @@ export class ProfileFormComponent implements OnInit {
   ngOnInit(): void {
     this.getDetails();
     this.registerForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(4)]],
+      name: [this.doctor?.fullName, [Validators.required, Validators.minLength(4)]],
       email: [
-        '',
+        this.doctor?.email,
         [
           Validators.required,
           Validators.pattern(/^[\w-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,4}$/),
         ],
       ],
-      number: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      number: [this.doctor?.number, [Validators.required, Validators.pattern(/^\d{10}$/)]],
       experience: [
-        '',
+        this.doctor?.experience,
         [Validators.required, Validators.pattern(/^\d{1,2}-\d{1,2}$/)],
       ],
     });
@@ -44,18 +49,10 @@ export class ProfileFormComponent implements OnInit {
 
   //get doctor details
   getDetails() {
-    this.doctorService.getDetails().subscribe((data) => {
-      this.doctor = data;
+    this.store.select(getProfile).subscribe(doctor=>{
+      this.doctor = doctor;
       this.loader = false;
-
-      //set form default values
-      this.registerForm.patchValue({
-        name: this.doctor.fullName,
-        email: this.doctor.email,
-        number: this.doctor.number,
-        experience: this.doctor.experience,
-      });
-    });
+    })
   }
 
   //submit updated details

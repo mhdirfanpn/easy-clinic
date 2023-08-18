@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/shared/service/auth.service';
 import { AdminService } from '../../service/admin.service';
 import { UserData } from 'src/app/interface/user';
 
@@ -11,6 +10,7 @@ import { UserData } from 'src/app/interface/user';
 export class UsersListComponent implements OnInit {
   user: UserData[] = [];
   loader: boolean = true;
+  search! : string
 
   constructor(
     private adminService: AdminService
@@ -27,5 +27,9 @@ export class UsersListComponent implements OnInit {
   //block / unBlock user
   onCheckboxChange(id: any) {
     this.adminService.blockUser(id).subscribe();
+  }
+
+  onSearchChanged(searchValue:string){
+    this.search = searchValue
   }
 }

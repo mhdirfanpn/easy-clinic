@@ -1,0 +1,45 @@
+<div *ngIf="loader" class="loader-container">
+  <div class="loader"></div>
+</div>
+<div 
+  class="p-4 md:p-6 bg-white ml-0 md:ml-3 mt-0 md:mt-24 max-w-1400px border-1 border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-200 dark:border-gray-200 dark:hover:bg-gray-200"
+>
+  <p class="text-lg md:text-xl font-medium">Select Date:</p>
+  <div class="mt-3">
+    <input type="date" [(ngModel)]="selectedDate" (ngModelChange)="handleDateChange($event)">
+  </div>
+  <div class="mt-9 space-y-4">
+    <p class="text-lg md:text-xl font-medium">Select Time:</p>
+    <div class="flex flex-wrap">
+      <label *ngFor="let timing of availableTimings" class="pl-2 md:pl-28">
+        <input 
+          type="checkbox" 
+          class="form-checkbox" 
+          [checked]="selectedTimings.includes(timing.time)" 
+          (change)="handleTimingSelection(timing.time)"
+        />
+        {{ timing.time }}
+        <!-- Add Badge for booked timings if needed -->
+      </label>
+    </div>
+    <div class="flex justify-center">
+      <button 
+        class="mt-6 bg-blue-500 text-white px-3 py-2 rounded-md disabled:opacity-50"
+        [disabled]="selectedTimings.length === 0"
+        (click)="handleSubmit()"
+      >
+        Submit Timings
+      </button>
+    </div>
+    <div class="mt-4">
+      <ng-container *ngIf="selectedTimings.length > 0; else noTimings">
+        <span *ngFor="let timing of selectedTimings" class="mr-2 md:mr-12">
+          <span class="px-2 py-1 bg-green-500 text-white rounded-md">{{ timing }}</span>
+        </span>
+      </ng-container>
+      <ng-template #noTimings>
+        <p class="italic">Please select one or more available appointment timings.</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AdminService } from '../../service/admin.service';
 import { ApiResponse } from 'src/app/interface/user';
 

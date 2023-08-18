@@ -12,7 +12,7 @@ import { UserData } from 'src/app/interface/user';
 
 export class UserLoginComponent implements OnInit {
 
-  registrationForm!: FormGroup;
+  loginForm!: FormGroup;
   userDetails! : UserData
   errorMessage: string | undefined;
   inputClass = "block w-full px-4 py-2 mt-2 text-blue-900 bg-white border rounded-md focus:border-blue-900 focus:ring-blue-900 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -23,7 +23,7 @@ export class UserLoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.registrationForm = this.formBuilder.group({
+    this.loginForm = this.formBuilder.group({
       email: ['irfan@gmail.com', [Validators.required, Validators.pattern(/^[\w-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,4}$/)]],
       password: [
         'Irfan@123',
@@ -38,16 +38,16 @@ export class UserLoginComponent implements OnInit {
 
   //submit user login
   login() {
-    if (this.registrationForm.invalid) {
+    if (this.loginForm.invalid) {
       this.errorMessage = 'All fields are required';
       return;     
     }
 
-    this.userService.loginUser(this.registrationForm.value.email,this.registrationForm.value.password).subscribe((data: ApiResponse) => {
+    this.userService.loginUser(this.loginForm.value.email,this.loginForm.value.password).subscribe((data: ApiResponse) => {
       !data.success ?  this.errorMessage = data.message : ""
     });
 
     //reset the form after submit
-    this.registrationForm.reset();
+    this.loginForm.reset();
   }
 }

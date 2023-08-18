@@ -4,7 +4,7 @@
   
 <div class="w-3/4 mx-auto mt-10 border border-gray-300 bg-gray-100 shadow-md p-4">
     <div class="flex justify-between ">
-      <div class="content">
+      <div class="content"  *ngIf="doctor$ | async as doctor">
         <div class="image ">
           <img class="rounded-md h-60" src="{{doctor.profilePic}}" alt="">
         </div>
@@ -23,4 +23,5 @@
       </div>
     </div>
   </div>
-  
+
+ 

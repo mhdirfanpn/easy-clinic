@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DoctorService } from '../../service/doctor.service';
 
-<<<<<<< HEAD
 @Component({
   selector: 'app-time-slot',
   templateUrl: './time-slot.component.html',
@@ -14,19 +13,6 @@ export class TimeSlotComponent implements OnInit {
   loader : Boolean = true
 
   //available timings
-=======
-
-@Component({
-  selector: 'app-time-slot',
-  templateUrl: './time-slot.component.html',
-  styleUrls: ['./time-slot.component.css']
-})
-export class TimeSlotComponent implements OnInit {
-
-  selectedTimings: string[] = [];
-  selectedDate!: string;
-
->>>>>>> payment
   availableTimings = [
     { time: '10:00 AM' },
     { time: '12:00 PM' },
@@ -36,7 +22,6 @@ export class TimeSlotComponent implements OnInit {
     { time: '8:00 PM' },
   ];
 
-<<<<<<< HEAD
   constructor(private doctorService: DoctorService) {}
 
   ngOnInit(): void {
@@ -46,13 +31,6 @@ export class TimeSlotComponent implements OnInit {
   }
 
   //handle timing when doctor select the times using check box
-=======
-  constructor(private doctorService: DoctorService) { }
-
-  ngOnInit(): void {
-  }
-
->>>>>>> payment
   handleTimingSelection(timing: string): void {
     const index = this.selectedTimings.indexOf(timing);
     if (index === -1) {
@@ -62,7 +40,6 @@ export class TimeSlotComponent implements OnInit {
     }
   }
 
-<<<<<<< HEAD
   //submit the selected time
   handleSubmit() {
     if (!this.selectedDate) {
@@ -78,21 +55,6 @@ export class TimeSlotComponent implements OnInit {
   }
 
   //change the date for appoiment availability
-=======
-   handleSubmit() {
-    if (!this.selectedDate) {
-      alert("select a date")
-      return;
-    }
-
-
-    this.doctorService.setTimeSlot(this.selectedDate,this.selectedTimings,).subscribe(data=>{
-      alert("updated successfully")
-    })
-
-  }
-
->>>>>>> payment
   handleDateChange(date: string): void {
     this.selectedDate = date;
   }
