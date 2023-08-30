@@ -1,6 +1,8 @@
-let API_ENDPOINT = 'http://localhost:7000/api';
+// let API_ENDPOINT = 'http://localhost:7000/api';
+let API_ENDPOINT = 'https://doc-server.onrender.com/api';
 
-export const SOCKET_API = 'http://localhost:8900'
+
+export const SOCKET_API = 'https://socket-chat-o7ev.onrender.com'
 
 export const USER_API = API_ENDPOINT;
 

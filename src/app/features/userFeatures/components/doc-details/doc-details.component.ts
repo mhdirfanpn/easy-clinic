@@ -45,6 +45,7 @@ export class DocDetailsComponent implements OnInit {
     //fetch single doctor
     this.userService.getDocDetails(this.getParamId).subscribe((data) => {
       this.docDetails = data;
+      console.log(data)
       this.loader = false;
     });
   }

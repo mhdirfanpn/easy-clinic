@@ -4,8 +4,9 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
+  HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { AuthService } from '../service/auth.service';
 
 @Injectable()
@@ -18,8 +19,10 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     // add authorization header to request
     let token: string | null = null;
+    console.log("first")
 
     if (this.authService.isLoggedIn()) {
+      console.log("hai")
       token = this.authService.getJwtToken();
     } else if (this.authService.isDoctorLoggedIn()) {
       token = this.authService.getDoctorToken();
@@ -35,6 +38,17 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(request);
+
+    return next.handle(request)
+    .pipe(catchError((err: any) => {
+        console.log('this log isn');
+        if (err instanceof HttpErrorResponse) {
+            if (err.status === 403) {
+                console.log('Unauthorized');
+            }
+        }
+
+      return new Observable<HttpEvent<any>>();
+    }));
   }
 }

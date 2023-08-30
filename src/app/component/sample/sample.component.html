@@ -1,0 +1,36 @@
+<div class="w-60 m-auto">
+    <div class="inline-block" [formGroup]="loginForm">
+        <label class="text-gray-600 text-xl font-semibold">Enter your Name</label>
+        <input type="text" class="bg-slate-300" formControlName="name" [(ngModel)]="name"/>
+        <div *ngIf="loginForm.get('name')?.invalid && loginForm.get('name')?.touched" class="error">
+            <span> Name is required and it must be minimum 4 characters</span>
+         </div>
+        <button type="submit" (click)="submitForm()" class="bg-black p-1 text-white mt-3">Submit</button>
+    </div>
+
+    <form class="inline-block mt-7" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <label class="text-gray-600 text-xl font-semibold">Enter your Name</label>
+        <input type="text" class="bg-slate-300" formControlName="name" [(ngModel)]="name"/>
+        <div *ngIf="loginForm.get('name')?.invalid && loginForm.get('name')?.touched" class="error">
+           <span> Name is required and it must be minimum 4 characters</span>
+        </div>
+        <button type="submit" [disabled]="loginForm.invalid" class="bg-gray-500 p-1 text-white mt-3">Submit</button>
+    </form>
+
+    <div class="mt-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let d of tableData | search : name">
+                    <td>{{d.id}}</td>
+                    <td>{{d.name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

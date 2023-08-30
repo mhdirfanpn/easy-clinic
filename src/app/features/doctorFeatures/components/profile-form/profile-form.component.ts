@@ -86,6 +86,7 @@ export class ProfileFormComponent implements OnInit {
       const file: File = event.target.files[0];
       if (file) {
         this.formdata = new FormData();
+        console.log(file)
         this.formdata.append('image', file);
         this.loader = true;
         this.doctorService
