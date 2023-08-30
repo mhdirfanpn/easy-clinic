@@ -2,7 +2,9 @@
 let API_ENDPOINT = 'https://doc-server.onrender.com/api';
 
 
-export const SOCKET_API = 'https://socket-chat-o7ev.onrender.com'
+export const SOCKET_API = 'https://new-socket.onrender.com'
+
+
 
 export const USER_API = API_ENDPOINT;
 
